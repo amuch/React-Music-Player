@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import AppContext from './AppContext';
+import Albums from './Albums/Albums';
+// import Player from './Player/Player';
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            // player: null,
+            isPlaying: false,
+            setPlayingTrue: () => this.state.isPlaying = true,
+            setPlayingFalse: () => this.state.isPlaying = false,
+            hideAllSongs: () => this.hideAllSongs(),
+        }
+    }
+
+    hideAllSongs = () => {
+
+    }
+
+    // componentDidMount() {
+    //     this.setState({player: new Player()})
+    //     // this.state.player = new Player();
+    // }
+
+    render() {
+
+        return(
+            <AppContext.Provider value = { this.state } >
+            <div>
+                <Albums />
+            </div>
+            </AppContext.Provider>
+        );
+    }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

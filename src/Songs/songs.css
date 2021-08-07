@@ -1,0 +1,17 @@
+.song_div {
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(10px, auto);
+}
+
+.song_track {
+    grid-column: 1 / 2;
+}
+
+.song_button {
+    max-width: 100px;
+    max-height: 50px;
+    grid-column: 2 / 2;
+}
