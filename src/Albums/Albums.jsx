@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Album from './Album';
 
+const ROAD_URL = 'http://muchserver.ddns.net/music/api/albums/';
+const HOME_URL = 'http://192.168.0.200/music/api/albums/';
+
 export default class Albums extends Component {
     constructor(props) {
         super(props);
@@ -12,8 +15,16 @@ export default class Albums extends Component {
         this.getAlbums = this.getAlbums.bind(this);
     }
 
+    getURL = () => {
+        if(window.location.href.includes('much'))
+            return ROAD_URL;
+        else
+            return HOME_URL;
+    }
+
+
     async getAlbums() {
-        const res = await fetch('http://192.168.0.200/music/api/albums/');
+        const res = await fetch(this.getURL());
         const data = await res.json();
         return data;
     }

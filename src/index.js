@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import AppContext from './AppContext';
 import Albums from './Albums/Albums';
+import './index.css';
 // import Player from './Player/Player';
 
 class App extends Component {
