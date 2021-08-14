@@ -3,8 +3,7 @@ import Song from './Song';
 
 export default class Songs extends Component {
 
-    render() {
-        // const { songs } = this.props;
+    render() {        
         return (
             <Fragment>
                 {this.props.songs.map((song) =>(

@@ -31,17 +31,11 @@ class App extends Component {
       tempArray.push(songObject);
       this.setState( {playList: tempArray} );
       console.log(this.state.playList);
-
-    }
+  }
 
     hideAllSongs = () => {
 
     }
-
-    // componentDidMount() {
-    //     this.setState({player: new Player()})
-    //     // this.state.player = new Player();
-    // }
 
     render() {
 

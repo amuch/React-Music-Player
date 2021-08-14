@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Album from './Album';
+import './albums.css'
 
 const ROAD_URL = 'http://muchserver.ddns.net/music/api/albums/';
 const HOME_URL = 'http://192.168.0.200/music/api/albums/';
@@ -36,7 +37,7 @@ export default class Albums extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div className="albums">
                 {this.state.albums.map((album) =>(
                     <Album
                         artist = { album.artist.name }
@@ -46,7 +47,7 @@ export default class Albums extends Component {
                         key = { album.artist.name + "_" + album.title }
                     />
                 ))}
-            </Fragment>
+            </div>
         );
     }
 }
