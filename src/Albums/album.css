@@ -2,4 +2,15 @@
     margin: 0 auto;
     width: 25vh;
     height: 25vh;
+    padding: 1vw;
+}
+
+.album_title, .add_album {
+    /* float: left; */
+    /* display: inline-block; */
+    padding: 1vw;
+}
+
+.album_artist {
+    padding: 1vw;
 }

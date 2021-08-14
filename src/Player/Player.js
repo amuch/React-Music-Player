@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import AppContext from '../AppContext';
 import './player.css';
 
@@ -27,8 +27,10 @@ export default class Player extends Component {
             audio.play();
             this.setState({ audio: audio });
             this.context.isPlaying = true;
+            this.context.setReadyState("Now Playing");
             audio.addEventListener('ended', () => {
                 this.setState({ currentTrack: "" });
+                this.context.setReadyState("Ready");
                 this.context.isPlaying = false;
                 let tempArray = this.context.playList.splice(0, 1);
                 this.setState({ playList: tempArray });
@@ -38,7 +40,7 @@ export default class Player extends Component {
     }
 
     togglePlayBack = () => {
-        let { audio, isPaused, toggleToMode } = this.state;
+        let { audio, isPaused } = this.state;
         if(!isPaused) {
             audio.pause();
             this.setState({ isPaused: true, toggleToMode: "Resume" });
@@ -50,9 +52,10 @@ export default class Player extends Component {
     }
 
     render() {
-        const { isPaused, toggleToMode, currentTrack } = this.state;
+        const { toggleToMode, currentTrack } = this.state;
         return(
             <div className="player">
+                <p>{ this.context.readyState }</p>
                 <p>{ currentTrack }</p>
               <button onClick={ this.playTrack }>Play</button>
               <button onClick={ this.togglePlayBack }>{ toggleToMode }</button>

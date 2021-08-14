@@ -1,11 +1,13 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Album from './Album';
+import AppContext from '../AppContext';
 import './albums.css'
 
 const ROAD_URL = 'http://muchserver.ddns.net/music/api/albums/';
 const HOME_URL = 'http://192.168.0.200/music/api/albums/';
 
 export default class Albums extends Component {
+    static contextType = AppContext;
     constructor(props) {
         super(props);
 
@@ -27,6 +29,7 @@ export default class Albums extends Component {
     async getAlbums() {
         const res = await fetch(this.getURL());
         const data = await res.json();
+        this.context.setReadyState("Ready");
         return data;
     }
 

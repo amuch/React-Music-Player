@@ -23,17 +23,28 @@ export default class Album extends Component {
         this.context.hideAllSongs();
     }
 
+    addAlbum = () => {
+        const { songs } = this.props;
+        for(let i = 0; i < songs.length; i++) {
+            this.context.addSongToPlaylist(songs[i].title, songs[i].song);
+        }
+    }
+
     render() {
         const { title, cover, artist, songs } = this.props;
         return (
             <Fragment>
-                <h2>{ artist }</h2>
+                <h2 className="album_artist">{ artist }</h2>
                 <img src={ cover } alt={ title } className="album_cover" onClick={ this.showSongs } />
-                <h3 onClick={ this.showSongs }>{ title }</h3>
+
+                <h3 className="album_title" onClick={ this.showSongs }>{ title }</h3>
                 {   this.state.songsVisible ?
-                    <Songs
-                        songs = { songs }
-                    />
+                    <Fragment>
+                        <button className="add_album" onClick={ this.addAlbum }>Add Album</button>
+                        <Songs
+                            songs = { songs }
+                        />
+                    </Fragment>
                     :
                     null
                 }

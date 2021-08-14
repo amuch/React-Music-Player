@@ -16,6 +16,8 @@ class App extends Component {
         super(props);
 
         this.state = {
+            readyState: "Loading songs ... ",
+            setReadyState: (newState) => this.setReadyState(newState),
             isPlaying: false,
             setPlayingTrue: () => this.state.isPlaying = true,
             setPlayingFalse: () => this.state.isPlaying = false,
@@ -32,6 +34,12 @@ class App extends Component {
       this.setState( {playList: tempArray} );
       console.log(this.state.playList);
   }
+
+  setReadyState = (newState) => {
+      this.setState({ readyState: newState })
+  }
+
+
 
     hideAllSongs = () => {
 
