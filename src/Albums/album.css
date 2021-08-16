@@ -5,12 +5,20 @@
     padding: 1vw;
 }
 
-.album_title, .add_album {
-    /* float: left; */
-    /* display: inline-block; */
-    padding: 1vw;
+.album_div {
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(10px, auto);
 }
 
-.album_artist {
-    padding: 1vw;
+.album_title {
+    grid-column: 1 / 2;
+}
+
+.add_album {
+    max-width: 100px;
+    max-height: 50px;
+    grid-column: 2 / 2;
 }

@@ -36,11 +36,13 @@ export default class Album extends Component {
             <Fragment>
                 <h2 className="album_artist">{ artist }</h2>
                 <img src={ cover } alt={ title } className="album_cover" onClick={ this.showSongs } />
-
-                <h3 className="album_title" onClick={ this.showSongs }>{ title }</h3>
-                {   this.state.songsVisible ?
+                {
+                    this.state.songsVisible ?
                     <Fragment>
-                        <button className="add_album" onClick={ this.addAlbum }>Add Album</button>
+                        <div className="album_div">
+                            <h3 className="album_title" onClick={ this.showSongs }>{ title }</h3>
+                            <button className="add_album" onClick={ this.addAlbum }>Add All</button>
+                        </div>
                         <Songs
                             songs = { songs }
                         />
