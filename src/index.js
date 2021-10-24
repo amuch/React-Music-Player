@@ -4,10 +4,13 @@ import AppContext from './AppContext';
 import Albums from './Albums/Albums';
 import './index.css';
 import Player from './Player/Player';
+import Playlist from './Playlist/Playlist';
+
 class SongObject {
-  constructor(name, location) {
+  constructor(name, location, id) {
     this.name = name;
     this.location = location;
+    this.id = id;
   }
 }
 
@@ -29,7 +32,7 @@ class App extends Component {
 
     addSongToPlaylist = (songName, songLocation) => {
       let tempArray = this.state.playList;
-      let songObject = new SongObject(songName, songLocation);
+      let songObject = new SongObject(songName, songLocation, tempArray.length);
       tempArray.push(songObject);
       this.setState( {playList: tempArray} );
       console.log(this.state.playList);
@@ -51,6 +54,7 @@ class App extends Component {
             <AppContext.Provider value = { this.state } >
             <div>
                 <Player />
+                <Playlist />
                 <Albums />
             </div>
             </AppContext.Provider>
